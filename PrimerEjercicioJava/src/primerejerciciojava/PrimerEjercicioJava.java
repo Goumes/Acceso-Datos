@@ -17,13 +17,10 @@ public class PrimerEjercicioJava
     {
          try
         {
-            String sourceURL =
-            "jdbc:sqlserver://localhost";
+            String sourceURL = "jdbc:sqlserver://localhost";
             String usuario = "pepejava";
             String password = "123";
-            Connection conexion =
-            DriverManager.getConnection(sourceURL,
-            usuario, password);
+            Connection conexion = DriverManager.getConnection(sourceURL,usuario, password);
             Statement sentencia = conexion.createStatement();
             
             sentencia.execute("USE Primitiva");
