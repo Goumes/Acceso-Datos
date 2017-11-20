@@ -25,6 +25,7 @@ public class SegundoEjercicio
     public static void main (String [] args)
     {
         Random random = new Random ();
+        
         try
         {
             String sourceURL = "jdbc:sqlserver://localhost";
@@ -57,8 +58,6 @@ public class SegundoEjercicio
                 }
                 senllamable.executeUpdate();
             }
-            
-            
             
             conexion.close ();
         }
