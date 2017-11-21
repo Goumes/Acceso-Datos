@@ -22,11 +22,8 @@ public class Examen2016 {
     {
         try
         {
-            String sourceURL = "jdbc:sqlserver://localhost";
-            String usuario = "pepejava";
-            String password = "123";
-        
-         Connection conexion = DriverManager.getConnection(sourceURL,usuario, password);
+         ConexionBD conexionBD = new ConexionBD ();
+         Connection conexion = conexionBD.getConexion ();
          Statement sentencia = conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
          Statement sentencia2 = conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
          String sql = "EXECUTE insertarMascotaEnfermedad ?,?,?";
