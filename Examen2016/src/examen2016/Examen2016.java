@@ -16,8 +16,8 @@ import java.sql.Statement;
  *
  * @author aleja
  */
-public class Examen2016 {
-
+public class Examen2016 
+{
     public static void main(String[] args) 
     {
         try
@@ -92,5 +92,4 @@ public class Examen2016 {
             System.out.println(e);
         }
     }
-    
 }
