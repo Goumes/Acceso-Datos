@@ -24,23 +24,21 @@ public class GestoraExamen
     Descripcion: Metodo dedicado a insertar un avion en la badat.
     Postcondiciones: un entero indicando si el insert ha sido exitoso o no 
     */
-    public int insertarAvion (Connection conexion, String matricula, String nombre, int idFabricante, String modelo, Date fechaFabricacion, Date fechaEntrada, int fila, int asientoFila, int autonomia)
+    public int insertarAvion (ResultSet aviones, Connection conexion, Avion avion)
     {
         int resultado = 1;
         try
         {
-            Statement sentencia2 = conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet aviones = sentencia2.executeQuery ("SELECT * FROM AS_Aviones");
             aviones.moveToInsertRow ();
-            aviones.updateString ("Matricula", matricula);
-            aviones.updateString ("Nombre", nombre);
-            aviones.updateInt ("ID_Fabricante", idFabricante);
-            aviones.updateString ("Modelo", modelo);
-            aviones.updateDate ("Fecha_Fabricacion", fechaFabricacion);
-            aviones.updateDate ("Fecha_Entrada", fechaEntrada);
-            aviones.updateInt ("Filas", fila);
-            aviones.updateInt ("Asientos_x_Fila", asientoFila);
-            aviones.updateInt ("Autonomia", autonomia);
+            aviones.updateString ("Matricula", avion.getMatricula ());
+            aviones.updateString ("Nombre", avion.getNombre ());
+            aviones.updateInt ("ID_Fabricante", avion.getIdFabricante ());
+            aviones.updateString ("Modelo", avion.getModelo ());
+            aviones.updateDate ("Fecha_Fabricacion", avion.getFechaFabricacion ());
+            aviones.updateDate ("Fecha_Entrada", avion.getFechaEntrada ());
+            aviones.updateInt ("Filas", avion.getFila ());
+            aviones.updateInt ("Asientos_x_Fila", avion.getAsientoFila ());
+            aviones.updateInt ("Autonomia", avion.getAutonomia ());
             aviones.insertRow ();
         }
         catch (SQLException e)
@@ -57,13 +55,11 @@ public class GestoraExamen
     Descripcion: Metodo dedicado a dar de baja un avion en la badat.
     Postcondiciones: un entero indicando si el insert ha sido exitoso o no 
     */
-    public int darBajaAvion (Connection conexion, String matricula)
+    public int darBajaAvion (CallableStatement senllamableProcedure, Connection conexion, String matricula)
     {
         int resultado = 1;
         try
         {
-            String procedure = "Execute bajaAvion ?";
-            CallableStatement senllamableProcedure = conexion.prepareCall (procedure);
             senllamableProcedure.setString (1, matricula);
             senllamableProcedure.executeUpdate();
         }
@@ -81,18 +77,16 @@ public class GestoraExamen
     Descripcion: Metodo dedicado a insertar una incidencia en la badat.
     Postcondiciones: un entero indicando si el insert ha sido exitoso o no 
     */
-    public int insertarIncidencia (Connection conexion, String matricula, BigDecimal latitud, BigDecimal longitud, String descripcion, String tipo)
+    public int insertarIncidencia (CallableStatement senllamableIncidencias, Connection conexion, Incidencia incidencia)
     {
         int resultado = 1;
         try
         {
-            String incidencia = "INSERT INTO AS_Incidencias (Avion, Latitud, Longitud, Descripcion, Tipo) VALUES (?, ?, ?, ?, ?)";
-            CallableStatement senllamableIncidencias =  conexion.prepareCall (incidencia);
-            senllamableIncidencias.setString (1, matricula);
-            senllamableIncidencias.setBigDecimal(2, latitud);
-            senllamableIncidencias.setBigDecimal (3, longitud);
-            senllamableIncidencias.setString (4, descripcion);
-            senllamableIncidencias.setString (5, tipo);
+            senllamableIncidencias.setString (1, incidencia.getMatricula ());
+            senllamableIncidencias.setBigDecimal(2, incidencia.getLatitud ());
+            senllamableIncidencias.setBigDecimal (3, incidencia.getLongitud ());
+            senllamableIncidencias.setString (4, incidencia.getDescripcion());
+            senllamableIncidencias.setString (5, incidencia.getTipo());
             senllamableIncidencias.executeUpdate ();
         }
         
@@ -105,13 +99,11 @@ public class GestoraExamen
         return resultado;
     }
     
-    public int buscarIdFabricante (Connection conexion, String nombre)
+    public int buscarIdFabricante (CallableStatement senllamableProcedure, Connection conexion, String nombre)
     {
         int resultado = 0;
         try
         {
-            String procedure = "EXECUTE buscarIdFabricante ?, ?";
-            CallableStatement senllamableProcedure = conexion.prepareCall (procedure);
             senllamableProcedure.setString (1, nombre);
             senllamableProcedure.registerOutParameter (2,java.sql.Types.INTEGER); 
             senllamableProcedure.executeUpdate();
