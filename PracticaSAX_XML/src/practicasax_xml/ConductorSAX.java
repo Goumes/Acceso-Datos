@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 
 public class ConductorSAX {
-public static void main (String[] args){
+public static void main (String[] args)
+{
 	String nombreArchivo = "src\\books.xml";
         ArrayList<Book> books;
 	PruebaSAX1 probando = new PruebaSAX1 (nombreArchivo);

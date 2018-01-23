@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-ene-2018 8:58:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.BiMascotasEnfermedades" table="BI_Mascotas_Enfermedades" schema="dbo" catalog="Bichos" optimistic-lock="version">
+        <composite-id name="id" class="hibernate.BiMascotasEnfermedadesId">
+            <key-property name="idenfermedad" type="short">
+                <column name="IDEnfermedad" />
+            </key-property>
+            <key-property name="mascota" type="string">
+                <column name="Mascota" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="biEnfermedades" class="hibernate.BiEnfermedades" update="false" insert="false" fetch="select">
+            <column name="IDEnfermedad" not-null="true" />
+        </many-to-one>
+        <many-to-one name="biMascotas" class="hibernate.BiMascotas" update="false" insert="false" fetch="select">
+            <column name="Mascota" length="5" not-null="true" />
+        </many-to-one>
+        <property name="fechaInicio" type="date">
+            <column name="FechaInicio" length="10" not-null="true" />
+        </property>
+        <property name="fechaCura" type="date">
+            <column name="FechaCura" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/fjcarmona/Documents/GitHub/Acceso%20a%20Datos/JABX_Prueba/src/marcas/atomos.xsd" uri="xml-resources/jaxb/Atomo/atomos.xsd"/>
+    <system systemId="file:/D:/agomez/Acceso-Datos/JABX_Prueba/src/marcas/atomos.xsd" uri="xml-resources/jaxb/Atomito/atomos.xsd"/>
+</catalog>

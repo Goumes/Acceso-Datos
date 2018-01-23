@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-ene-2018 8:58:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.BiClientes" table="BI_Clientes" schema="dbo" catalog="Bichos" optimistic-lock="version">
+        <id name="codigo" type="int">
+            <column name="Codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="9" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="30" not-null="true" />
+        </property>
+        <property name="numeroCuenta" type="string">
+            <column name="NumeroCuenta" length="24" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="30" />
+        </property>
+        <set name="biMascotases" table="BI_Mascotas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodigoPropietario" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.BiMascotas" />
+        </set>
+    </class>
+</hibernate-mapping>

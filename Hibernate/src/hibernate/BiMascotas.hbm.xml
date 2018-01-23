@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-ene-2018 8:58:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.BiMascotas" table="BI_Mascotas" schema="dbo" catalog="Bichos" optimistic-lock="version">
+        <id name="codigo" type="string">
+            <column name="Codigo" length="5" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="biClientes" class="hibernate.BiClientes" fetch="select">
+            <column name="CodigoPropietario" not-null="true" />
+        </many-to-one>
+        <property name="raza" type="string">
+            <column name="Raza" length="30" not-null="true" />
+        </property>
+        <property name="especie" type="string">
+            <column name="Especie" length="30" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="FechaNacimiento" length="10" not-null="true" />
+        </property>
+        <property name="fechaFallecimiento" type="date">
+            <column name="FechaFallecimiento" length="10" />
+        </property>
+        <property name="alias" type="string">
+            <column name="Alias" length="20" not-null="true" />
+        </property>
+        <set name="biVisitases" table="BI_Visitas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Mascota" length="5" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.BiVisitas" />
+        </set>
+        <set name="biMascotasEnfermedadeses" table="BI_Mascotas_Enfermedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Mascota" length="5" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.BiMascotasEnfermedades" />
+        </set>
+    </class>
+</hibernate-mapping>

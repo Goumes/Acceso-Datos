@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-ene-2018 8:58:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.BiVisitas" table="BI_Visitas" schema="dbo" catalog="Bichos" optimistic-lock="version">
+        <id name="idvisita" type="int">
+            <column name="IDVisita" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="biMascotas" class="hibernate.BiMascotas" fetch="select">
+            <column name="Mascota" length="5" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="Fecha" length="16" not-null="true" />
+        </property>
+        <property name="temperatura" type="byte">
+            <column name="Temperatura" not-null="true" />
+        </property>
+        <property name="peso" type="int">
+            <column name="Peso" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='Coranzoncitos' version='1.0'>
+	<schema type='-xmlschema' package='corazonesClases' name='Corazon'>
+		<xjc-options>
+			<xjc-option name='-quiet' value='true'/>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/Corazon/corazones.xsd' origLocation='C:\Users\agomez\Desktop\corazones.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>

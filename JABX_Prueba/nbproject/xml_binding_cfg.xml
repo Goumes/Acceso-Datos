@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='JABX_Prueba' version='1.0'>
+	<schema type='-xmlschema' package='' name='Atomo'>
+		<xjc-options>
+			<xjc-option name='-quiet' value='true'/>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/Atomo/atomos.xsd' origLocation='src/marcas/atomos.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+	<schema type='-xmlschema' package='pruebas2' name='Atomito'>
+		<xjc-options>
+			<xjc-option name='-quiet' value='true'/>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/Atomito/atomos.xsd' origLocation='src/marcas/atomos.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>
