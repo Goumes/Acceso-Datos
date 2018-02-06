@@ -1,6 +1,8 @@
 package test;
 
+import acceso.HibernateUtil;
 import java.util.ArrayList;
+import org.hibernate.Session;
 import persistente.Criaturitas;
 
 /**
@@ -13,13 +15,14 @@ public class Conductor {
         final String nombre = "Violeta";
         ManejadorCriaturitas mc = new ManejadorCriaturitas();
         ManejadorRegalos mr = new ManejadorRegalos ();
+        Session ses = HibernateUtil.getSessionFactory().openSession();
 //        mc.borrar(otro);
 //        mc.crearCriaturita(nombre,id);
-        mc.listaCriaturitas(mc.getCriaturitas());
+        mc.listaCriaturitas(ses, mc.getCriaturitas(ses));
         System.out.println("\n---------------------------\n");
-        mr.listaRegalos(mr.getRegalos());
+        mr.listaRegalos(ses, mr.getRegalos(ses));
 //        mc.cambiarNombre(nombre, id);
-        System.out.println("\n---------------------------\n"+mc.cadenaCriaturita(mc.recuperar(id)));
-        System.out.println("\n---------------------------\n"+mr.cadenaRegalo(mr.recuperar(id)));
+        System.out.println("\n---------------------------\n"+mc.cadenaCriaturita(mc.recuperar(ses, id)));
+        System.out.println("\n---------------------------\n"+mr.cadenaRegalo(mr.recuperar(ses, id)));
     }
 }
