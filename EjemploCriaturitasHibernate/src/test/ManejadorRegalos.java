@@ -35,7 +35,7 @@ public class ManejadorRegalos
         regalazo.setEdadMinima(edadMinima);
         regalazo.setPrecio(precio);
         regalazo.setGoesTo(criaturitas);
-       // Al ejecutar el método save el objeto se convierte en persistente
+        //Al ejecutar el método save el objeto se convierte en persistente
         ses.save(regalazo);
         tran.commit();
         
