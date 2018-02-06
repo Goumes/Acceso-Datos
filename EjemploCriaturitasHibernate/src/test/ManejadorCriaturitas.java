@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
  * @author Leo
  */
 public class ManejadorCriaturitas {
-    public void crearCriaturita (Session ses, String nombre, short id){
+    public Criaturitas crearCriaturita (Session ses, String nombre, short id){
         Transaction tran;
         tran = ses.beginTransaction();
         Criaturitas nene = new Criaturitas();
@@ -19,6 +19,8 @@ public class ManejadorCriaturitas {
 		// Al ejecutar el método save el objeto se convierte en persistente
         ses.save(nene);
         tran.commit();
+        
+        return nene;
     }
     public void cambiarNombre (Session ses, String nombre, short id){
         Criaturitas nene;
