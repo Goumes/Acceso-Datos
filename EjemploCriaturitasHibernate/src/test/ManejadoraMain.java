@@ -7,6 +7,8 @@ package test;
 
 import java.math.BigDecimal;
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import persistente.Criaturitas;
 import persistente.Regalos;
 
@@ -34,6 +36,16 @@ public class ManejadoraMain {
         criaturita.setId (id);
         criaturita.setNombre(nombre);
         criaturita.setRegalosList(regalos);
+        
+        return criaturita;
+    }
+    
+    public Criaturitas actualizarCriaturita (Session ses, Criaturitas criaturita)
+    {
+        Transaction tran;
+        tran = ses.beginTransaction();
+        ses.update(criaturita); //Aqui criaturita se ha vuelto persistente y se ha sincronizado con la badat
+        tran.commit ();
         
         return criaturita;
     }
